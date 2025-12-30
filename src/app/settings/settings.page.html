@@ -10,4 +10,21 @@
       <ion-title size="large">Settings</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-text class="section-title">
+  <h2>Display Recipe Measurements in:</h2>
+  </ion-text>
+
+<ion-radio-group [(ngModel)]="unit" (ionChange)="onUnitChange()">
+  <ion-item>
+    <ion-label>Metric</ion-label>
+    <ion-radio slot="start" value="metric"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>US</ion-label>
+    <ion-radio slot="start" value="us"></ion-radio>
+  </ion-item>
+</ion-radio-group>
+
 </ion-content>
