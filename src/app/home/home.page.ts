@@ -6,6 +6,8 @@ import { addIcons } from 'ionicons';
 import { heart, settingsOutline } from 'ionicons/icons';
 import { RouterLink } from '@angular/router';
 import { MySettings } from '../services/my-settings';
+import { MyHttp } from '../services/my-http';
+import { HttpOptions } from '@capacitor/core';
 
 
 @Component({
@@ -16,7 +18,35 @@ import { MySettings } from '../services/my-settings';
 })
 export class HomePage {
 
-  constructor(private settings:MySettings) {
+  apiKey:string = "70759a4f7911402abcc53d3c51d3b759";
+  recipeKeywords:string = "";
+  results:any = [];
+  errorMessage:string = "";
+
+  constructor(private settings:MySettings, private mhs: MyHttp) {
     addIcons({ heart, settingsOutline });
   }
+
+  ionViewWillEnter(){}
+
+  private async recepieSearch(){
+    const option: HttpOptions = {
+     url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${this.apiKey}&includeIngredients=${this.recipeKeywords}`
+    }
+    const response = await this.mhs.get(option);
+    this.results = response.data.results;
+    console.log(JSON.stringify(this.results)); //Debug
+  }
+
+  search(){
+    console.log("button working, the recipeKeywords are: " + this.recipeKeywords)
+
+    if (!this.recipeKeywords.trim()){
+      this.errorMessage = "Plase enter at least on ingredient.";
+      return;
+    }
+    this.errorMessage = '';
+    this.recepieSearch();
+  }
+
 }

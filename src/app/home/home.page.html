@@ -14,7 +14,12 @@
 
 <ion-content [fullscreen]="true">
     <ion-item>
-    <ion-input label="Enter Ingredients" placeholder="Ingredients"></ion-input>
+    <ion-input label="Enter Ingredients" placeholder="Ingredients" [(ngModel)]="recipeKeywords"></ion-input>
   </ion-item>
-  <ion-button expand="full" >Search</ion-button>
+  <ion-button expand="full" (click)="search()" >Search</ion-button>
+  <ion-item *ngIf="errorMessage" color="medium">
+    {{ errorMessage }}
+  </ion-item>
+
+
 </ion-content>
