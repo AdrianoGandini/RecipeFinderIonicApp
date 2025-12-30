@@ -15,7 +15,7 @@
   <h2>Display Recipe Measurements in:</h2>
   </ion-text>
 
-<ion-radio-group [(ngModel)]="unit" (ionChange)="onUnitChange()">
+<ion-radio-group [(ngModel)]="newMeasureUnit" (ionChange)="onUnitChange()">
   <ion-item>
     <ion-label>Metric</ion-label>
     <ion-radio slot="start" value="metric"></ion-radio>
@@ -27,4 +27,7 @@
   </ion-item>
 </ion-radio-group>
 
+<ion-content class="ion-padding">
+  <ion-button [routerLink]="['/home']">Back</ion-button>
+</ion-content>
 </ion-content>

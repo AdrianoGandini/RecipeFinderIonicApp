@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
 import { heart, settingsOutline } from 'ionicons/icons';
 import { RouterLink } from '@angular/router';
+import { MySettings } from '../services/my-settings';
 
 
 @Component({
@@ -15,10 +16,7 @@ import { RouterLink } from '@angular/router';
 })
 export class HomePage {
 
-  constructor() {
+  constructor(private settings:MySettings) {
     addIcons({ heart, settingsOutline });
   }
-
-
-
 }
