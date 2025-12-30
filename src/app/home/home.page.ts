@@ -8,6 +8,7 @@ import { RouterLink } from '@angular/router';
 import { MySettings } from '../services/my-settings';
 import { MyHttp } from '../services/my-http';
 import { HttpOptions } from '@capacitor/core';
+import { MyData } from '../services/my-data';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class HomePage {
   results:any = [];
   errorMessage:string = "";
 
-  constructor(private settings:MySettings, private mhs: MyHttp) {
+  constructor(private s:MyData, private mhs: MyHttp) {
     addIcons({ heart, settingsOutline });
   }
 
@@ -47,6 +48,11 @@ export class HomePage {
     }
     this.errorMessage = '';
     this.recepieSearch();
+  }
+
+  detailSelected(recipe:any){
+    console.log(JSON.stringify(recipe.id));
+    this.s.set("id", recipe.id);
   }
 
 }

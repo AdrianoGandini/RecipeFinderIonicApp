@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { MySettings } from '../services/my-settings';
+import { MyData } from '../services/my-data';
+import { MyHttp } from '../services/my-http';
 
 @Component({
   selector: 'app-recipe-details',
@@ -12,7 +15,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/stan
 })
 export class RecipeDetailsPage implements OnInit {
 
-  constructor() { }
+  constructor(private settings:MySettings, private s:MyData, private mhs:MyHttp) { }
 
   ngOnInit() {
   }
