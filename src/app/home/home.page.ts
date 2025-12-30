@@ -51,7 +51,7 @@ export class HomePage {
   }
 
   detailSelected(recipe:any){
-    console.log(JSON.stringify(recipe.id));
+    //console.log(JSON.stringify(recipe.id));
     this.s.set("id", recipe.id);
   }
 

@@ -25,7 +25,7 @@ export class MySettings {
   }
 
   getUnit(){
-    this.s.get("unit");
+    return this.s.get("unit");
   }
 
 }
