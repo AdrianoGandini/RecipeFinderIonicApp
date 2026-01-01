@@ -5,10 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
 import { heart, settingsOutline } from 'ionicons/icons';
 import { RouterLink } from '@angular/router';
-import { MySettings } from '../services/my-settings';
-import { MyHttp } from '../services/my-http';
-import { HttpOptions } from '@capacitor/core';
 import { MyData } from '../services/my-data';
+import { MyRecipe } from '../services/my-recipe';
 
 
 @Component({
@@ -24,19 +22,15 @@ export class HomePage {
   results:any = [];
   errorMessage:string = "";
 
-  constructor(private s:MyData, private mhs: MyHttp) {
+  constructor(private s:MyData, private recipe:MyRecipe) {
     addIcons({ heart, settingsOutline });
   }
 
   ionViewWillEnter(){}
 
   private async recepieSearch(){
-    const option: HttpOptions = {
-     url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${this.apiKey}&includeIngredients=${this.recipeKeywords}`
-    }
-    const response = await this.mhs.get(option);
-    this.results = response.data.results;
-    //console.log(JSON.stringify(this.results)); //Debug
+
+    this.results = (await this.recipe.searchByIngredients(this.recipeKeywords)).data.results;
   }
 
   search(){
