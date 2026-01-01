@@ -1,11 +1,10 @@
-import { HttpOptions } from '@capacitor/core';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { MySettings } from '../services/my-settings';
 import { MyData } from '../services/my-data';
-import { MyHttp } from '../services/my-http';
+import { MyRecipe } from '../services/my-recipe';
 
 @Component({
   selector: 'app-recipe-details',
@@ -16,12 +15,11 @@ import { MyHttp } from '../services/my-http';
 })
 export class RecipeDetailsPage implements OnInit {
 
-  constructor(private settings:MySettings, private s:MyData, private mhs:MyHttp) { }
+  constructor(private settings:MySettings, private s:MyData, private r:MyRecipe) { }
 
   recipeId:string= "";
   unit:string= "";
   recipe:any = [];
-  apiKey:string = "70759a4f7911402abcc53d3c51d3b759";
 
   ngOnInit() {
     this.inicializeVariables();
@@ -44,11 +42,8 @@ export class RecipeDetailsPage implements OnInit {
 
   private async recepieIdSearch(){
       //console.log("Recipe Id " + this.recipeId)
-      const option: HttpOptions = {
-       url: `https://api.spoonacular.com/recipes/${this.recipeId}/information?apiKey=${this.apiKey}`
-      }
-      const response = await this.mhs.get(option);
-      this.recipe = response.data;
+
+      this.recipe = (await this.r.getRecipeDetails(this.recipeId)).data;
       console.log(this.recipe); //Debug
     }
 
