@@ -36,11 +36,11 @@ export class HomePage {
     }
     const response = await this.mhs.get(option);
     this.results = response.data.results;
-    console.log(JSON.stringify(this.results)); //Debug
+    //console.log(JSON.stringify(this.results)); //Debug
   }
 
   search(){
-    console.log("button working, the recipeKeywords are: " + this.recipeKeywords)
+    //console.log("button working, the recipeKeywords are: " + this.recipeKeywords)
 
     if (!this.recipeKeywords.trim()){
       this.errorMessage = "Plase enter at least on ingredient.";

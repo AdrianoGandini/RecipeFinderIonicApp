@@ -18,7 +18,7 @@ export class RecipeDetailsPage implements OnInit {
 
   constructor(private settings:MySettings, private s:MyData, private mhs:MyHttp) { }
 
-  recipeId:string= "715957";
+  recipeId:string= "";
   unit:string= "";
   recipe:any = [];
   apiKey:string = "70759a4f7911402abcc53d3c51d3b759";
@@ -43,13 +43,13 @@ export class RecipeDetailsPage implements OnInit {
   }
 
   private async recepieIdSearch(){
-      console.log("Recipe Id " + this.recipeId)
+      //console.log("Recipe Id " + this.recipeId)
       const option: HttpOptions = {
        url: `https://api.spoonacular.com/recipes/${this.recipeId}/information?apiKey=${this.apiKey}`
       }
       const response = await this.mhs.get(option);
       this.recipe = response.data;
-      //console.log(this.recipe); //Debug
+      console.log(this.recipe); //Debug
     }
 
 }
