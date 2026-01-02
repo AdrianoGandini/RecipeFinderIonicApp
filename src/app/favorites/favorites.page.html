@@ -1,6 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>Favorites Recipes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/favorites">
+        <ion-icon name="heart"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/settings">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -12,6 +25,9 @@
   </ion-card-header>
   <ion-card-content>
       <ion-button routerLink="/recipe-details" (click)="detailSelected(fav) ">DETAILS</ion-button>
+      <ion-button fill="clear" (click)="remove(fav)">
+      REMOVE FROM FAVORITES
+      </ion-button>
   </ion-card-content>
 
 </ion-card>

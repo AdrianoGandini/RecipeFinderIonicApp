@@ -3,7 +3,7 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonInput, IonButt
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
-import { heart, settingsOutline } from 'ionicons/icons';
+import { heart, settingsOutline, home } from 'ionicons/icons';
 import { RouterLink } from '@angular/router';
 import { MyData } from '../services/my-data';
 import { MyRecipe } from '../services/my-recipe';
@@ -22,7 +22,7 @@ export class HomePage {
   errorMessage:string = "";
 
   constructor(private s:MyData, private recipe:MyRecipe) {
-    addIcons({ heart, settingsOutline });
+    addIcons({ heart, settingsOutline, home });
   }
 
   ionViewWillEnter(){}
