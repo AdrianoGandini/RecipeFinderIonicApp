@@ -44,7 +44,7 @@ export class HomePage {
   }
 
   detailSelected(recipe:any){
-    console.log(JSON.stringify(recipe.id)); //Debug
+    //console.log(JSON.stringify(recipe.id)); //Debug
     this.s.set("id", recipe.id);
   }
 

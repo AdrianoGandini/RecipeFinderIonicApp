@@ -48,7 +48,8 @@ export class MyRecipe {
       name: ingredient.name,
       image: ingredient.image,
       amount: ingredient.measures[unit].amount,
-      unit: ingredient.measures[unit].unitShort
+      unitShort: ingredient.measures[unit].unitShort,
+      unit: ingredient.measures[unit].unitLong
     }));
   }
 

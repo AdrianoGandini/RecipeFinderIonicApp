@@ -1,13 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>RecipeDetails</ion-title>
+    <ion-title>{{recipe.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">RecipeDetails</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h2>Ingredients List:</h2>
+  <ion-card *ngFor="let ing of recipe.ingredients">
+  <img alt="Ingredient image" src = {{imgBase}}{{ing.image}} />
+  <ion-card-header>
+    <ion-card-title>{{ ing.amount }} {{ ing.unitShort }} of {{ ing.name }}</ion-card-title>
+    <ion-card-subtitle>{{ ing.amount }} {{ ing.unit }}</ion-card-subtitle>
+  </ion-card-header>
+</ion-card>
+<h2>Instructions:</h2>
+
+
+<ion-list>
+  <ion-item *ngFor="let step of recipe.steps">
+    <ion-badge slot="start" color="primary">{{ step.number }}</ion-badge>
+    <ion-label class="ion-text-wrap">{{ step.step }}</ion-label>
+  </ion-item>
+</ion-list>
+<ion-button fill="clear"  routerLink="/favorites">
+  <ion-icon name="heart"></ion-icon> ADD TO FAVORITES
+</ion-button>
 </ion-content>
