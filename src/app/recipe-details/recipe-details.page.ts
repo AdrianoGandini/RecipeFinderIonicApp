@@ -8,6 +8,7 @@ import { MyRecipe } from '../services/my-recipe';
 import { addIcons } from 'ionicons';
 import { heart} from 'ionicons/icons';
 import { RouterLink } from '@angular/router';
+import { MyFavorites } from '../services/my-favorites';
 
 
 
@@ -20,7 +21,12 @@ import { RouterLink } from '@angular/router';
 })
 export class RecipeDetailsPage{
 
-  constructor(private settings:MySettings, private s:MyData, private r:MyRecipe) {
+  constructor(
+    private settings:MySettings,
+    private s:MyData,
+    private r:MyRecipe,
+    private favorite: MyFavorites
+  ) {
     addIcons({ heart});
   }
 
@@ -30,9 +36,17 @@ export class RecipeDetailsPage{
   recipeId:string= "";
   unit:string= "";
   recipe:any = [];
+  isFavorite:boolean = false;
 
   ionViewWillEnter() {
     this.inicializeVariables();
+
+  }
+
+  private async inicializeVariables(){
+    await this.setUpRecipeId();
+    await this.checkIfFavorite();
+    await this.recepieIdSearch();
 
   }
 
@@ -40,9 +54,8 @@ export class RecipeDetailsPage{
     this.recipeId = await this.s.get("id");
   }
 
-  private async inicializeVariables(){
-    await this.setUpRecipeId();
-    await this.recepieIdSearch();
+  private async checkIfFavorite(){
+    this.isFavorite = await this.favorite.isFavorite(this.recipeId);
   }
 
   private async recepieIdSearch(){
@@ -53,5 +66,13 @@ export class RecipeDetailsPage{
     }
 
 
+  async toggleFavorite(){
+    if (this.isFavorite){
+      await this.favorite.removeFavorite(this.recipeId);
+    }else{
+      await this.favorite.addfavorite(this.recipe);
+    }
+    this.isFavorite = !this.isFavorite; //change the isFavorite variable
+  }
 
 }

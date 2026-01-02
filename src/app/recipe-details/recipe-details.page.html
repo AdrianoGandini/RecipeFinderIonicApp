@@ -22,7 +22,8 @@
     <ion-label class="ion-text-wrap">{{ step.step }}</ion-label>
   </ion-item>
 </ion-list>
-<ion-button fill="clear"  routerLink="/favorites">
-  <ion-icon name="heart"></ion-icon> ADD TO FAVORITES
+<ion-button fill="clear"  (click) = "toggleFavorite()">
+  <ion-icon name="heart"></ion-icon>
+  {{isFavorite ? "REMOVE FROM FAVORITES" : "ADD TO FAVORITES"}}
 </ion-button>
 </ion-content>

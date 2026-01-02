@@ -27,7 +27,7 @@ export class MyFavorites {
     }
   }
 
-async removeFavorite(id: number) {
+async removeFavorite(id: string) {
   let favorites = await this.getFavorites();
 
   favorites = favorites.filter((f:any) => f.id !== id);
