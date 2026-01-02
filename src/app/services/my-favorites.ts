@@ -8,7 +8,7 @@ export class MyFavorites {
 
   constructor(private s:MyData){}
 
-  async getFavorites(){
+  private async getFavorites(){
     return await this.s.get("favorites") || [];
   }
 
@@ -17,15 +17,23 @@ export class MyFavorites {
     return favorites.some((recipe: any) => recipe.id === id); //Some return a bollean
   }
 
-  async addfavorite(recipe:any){
+  async addFavorite(recipe:any){
     const favorites = await this.getFavorites();
     const exist = favorites.some((fav:any) => fav.id === recipe.id);
 
     if (!exist){
-      favorites.push(recipe);
+      favorites.push(this.getFavoriteDetails(recipe));
       await this.s.set("favorites", favorites);
     }
   }
+
+  private getFavoriteDetails(recipe:any) {
+      return {
+        id: recipe.id,
+        image: recipe.image,
+        title: recipe.title,
+      }
+    }
 
 async removeFavorite(id: string) {
   let favorites = await this.getFavorites();

@@ -7,7 +7,6 @@ import { MyData } from '../services/my-data';
 import { MyRecipe } from '../services/my-recipe';
 import { addIcons } from 'ionicons';
 import { heart} from 'ionicons/icons';
-import { RouterLink } from '@angular/router';
 import { MyFavorites } from '../services/my-favorites';
 
 
@@ -17,7 +16,7 @@ import { MyFavorites } from '../services/my-favorites';
   templateUrl: './recipe-details.page.html',
   styleUrls: ['./recipe-details.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonList, IonItem, IonBadge, IonLabel, IonButton, IonIcon, RouterLink]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonList, IonItem, IonBadge, IonLabel, IonButton, IonIcon]
 })
 export class RecipeDetailsPage{
 
@@ -70,7 +69,7 @@ export class RecipeDetailsPage{
     if (this.isFavorite){
       await this.favorite.removeFavorite(this.recipeId);
     }else{
-      await this.favorite.addfavorite(this.recipe);
+      await this.favorite.addFavorite(this.recipe);
     }
     this.isFavorite = !this.isFavorite; //change the isFavorite variable
   }
