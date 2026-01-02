@@ -37,6 +37,7 @@ export class MyRecipe {
 
     return {
       id: data.id,
+      image: data.image,
       title: data.title,
       ingredients: this.mapIngredients(data.extendedIngredients, unit),
       steps: this.mapSteps(data.analyzedInstructions)
