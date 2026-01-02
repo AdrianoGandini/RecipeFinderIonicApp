@@ -8,7 +8,7 @@ export class MyFavorites {
 
   constructor(private s:MyData){}
 
-  private async getFavorites(){
+  async getFavorites(){
     return await this.s.get("favorites") || [];
   }
 
