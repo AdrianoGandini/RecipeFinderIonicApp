@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>G00438802</ion-title>
-      <ion-buttons slot="end">
+    <ion-buttons slot="end">
       <ion-button routerLink="/favorites">
         <ion-icon name="heart"></ion-icon>
       </ion-button>
@@ -13,23 +13,23 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-    <ion-item>
+  <ion-item>
     <ion-input label="Enter Ingredients" placeholder="Ingredients" [(ngModel)]="recipeKeywords"></ion-input>
   </ion-item>
-  <ion-button expand="full" (click)="search()" >Search</ion-button>
+  <ion-button expand="full" (click)="search()">Search</ion-button>
   <ion-item *ngIf="errorMessage" color="medium">
     {{ errorMessage }}
   </ion-item>
 
   <ion-card *ngFor="let recipe of results">
-  <img alt="Recipe Image" src={{recipe.image}} />
-  <ion-card-header>
-    <ion-card-title>{{recipe.title}}</ion-card-title>
-  </ion-card-header>
+    <img alt="Recipe Image" src={{recipe.image}} />
+    <ion-card-header>
+      <ion-card-title>{{recipe.title}}</ion-card-title>
+    </ion-card-header>
 
-  <ion-card-content>
-    <ion-button routerLink="/recipe-details" (click)="detailSelected(recipe) ">DETAILS</ion-button>
-  </ion-card-content>
-</ion-card>
+    <ion-card-content>
+      <ion-button routerLink="/recipe-details" (click)="detailSelected(recipe) ">DETAILS</ion-button>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

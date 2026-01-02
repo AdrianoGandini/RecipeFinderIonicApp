@@ -41,9 +41,9 @@ export class RecipeDetailsPage implements OnInit {
   }
 
   private async recepieIdSearch(){
-      //console.log("Recipe Id " + this.recipeId)
+      //console.log("Recipe Id " + this.recipeId) //Debug
 
-      this.recipe = (await this.r.getRecipeDetails(this.recipeId)).data;
+      //this.recipe = (await this.r.getRecipeDetails(this.recipeId)).data;
       console.log(this.recipe); //Debug
     }
 

@@ -17,7 +17,6 @@ import { MyRecipe } from '../services/my-recipe';
 })
 export class HomePage {
 
-  apiKey:string = "70759a4f7911402abcc53d3c51d3b759";
   recipeKeywords:string = "";
   results:any = [];
   errorMessage:string = "";
@@ -29,8 +28,8 @@ export class HomePage {
   ionViewWillEnter(){}
 
   private async recepieSearch(){
-
-    this.results = (await this.recipe.searchByIngredients(this.recipeKeywords)).data.results;
+    this.results = (await this.recipe.searchByIngredients(this.recipeKeywords));
+    console.log(this.results); //Debug
   }
 
   search(){
@@ -45,7 +44,7 @@ export class HomePage {
   }
 
   detailSelected(recipe:any){
-    //console.log(JSON.stringify(recipe.id));
+    console.log(JSON.stringify(recipe.id)); //Debug
     this.s.set("id", recipe.id);
   }
 
