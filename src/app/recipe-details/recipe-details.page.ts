@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonList, IonItem, IonBadge, IonLabel, IonButton, IonIcon } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonList, IonItem, IonBadge, IonLabel, IonButton, IonIcon, IonButtons } from '@ionic/angular/standalone';
 import { MySettings } from '../services/my-settings';
 import { MyData } from '../services/my-data';
 import { MyRecipe } from '../services/my-recipe';
 import { addIcons } from 'ionicons';
-import { heart} from 'ionicons/icons';
+import { heart, settingsOutline } from 'ionicons/icons';
 import { MyFavorites } from '../services/my-favorites';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -16,7 +17,7 @@ import { MyFavorites } from '../services/my-favorites';
   templateUrl: './recipe-details.page.html',
   styleUrls: ['./recipe-details.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonList, IonItem, IonBadge, IonLabel, IonButton, IonIcon]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonList, IonItem, IonBadge, IonLabel, IonButton, IonIcon, IonButtons, RouterLink]
 })
 export class RecipeDetailsPage{
 
@@ -26,7 +27,7 @@ export class RecipeDetailsPage{
     private r:MyRecipe,
     private favorite: MyFavorites
   ) {
-    addIcons({ heart});
+    addIcons({ heart, settingsOutline });
   }
 
   // Base URL for ingredient images (API only returns filename)

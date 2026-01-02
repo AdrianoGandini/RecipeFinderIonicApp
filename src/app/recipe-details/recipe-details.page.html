@@ -1,11 +1,21 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>{{recipe.title}}</ion-title>
+
+    <ion-toolbar>
+    <ion-title>G00438802</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/favorites">
+        <ion-icon name="heart"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/settings">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h2>Ingredients List:</h2>
+  <h2> {{recipe.title}} Ingredients List:</h2>
   <ion-card *ngFor="let ing of recipe.ingredients">
   <img alt="Ingredient image" src = {{imgBase}}{{ing.image}} />
   <ion-card-header>
